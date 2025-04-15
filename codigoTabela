@@ -1,0 +1,9 @@
+CREATE TABLE problemas (
+    id SERIAL PRIMARY KEY,
+    titulo TEXT NOT NULL,
+    descricao TEXT NOT NULL,
+    solucao TEXT,
+    evitar TEXT,
+    imagem TEXT,
+    tag INT
+);
