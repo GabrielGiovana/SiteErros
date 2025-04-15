@@ -6,7 +6,7 @@ def conexao():
     bancoDeDados = psycopg2.connect(
         host="localhost",
         user="postgres",
-        password="tubarao007",
+        password="",
         database="Teste"
     )
     return bancoDeDados.cursor()
