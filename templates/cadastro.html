@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+<!-- Modal -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+    <h2>Cadastrar Novo Erro</h2>
+
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="solucao">Solução:</label>
+        <textarea id="solucao" name="solucao" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="evitar">Como evitar:</label>
+        <textarea id="evitar" name="evitar"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="imagem">URL da Imagem:</label>
+        <input type="text" id="imagem" name="imagem">
+      </div>
+
+      <div class="form-group">
+        <label for="tag">Tag:</label>
+        <input type="text" id="tag" name="tag">
+      </div>
+
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+  </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("modal");
+      const openModal = document.getElementById("openModal");
+      const closeModal = document.getElementById("closeModal");
+    
+      openModal.onclick = () => {
+        modal.style.display = "block";
+      };
+    
+      closeModal.onclick = () => {
+        modal.style.display = "none";
+      };
+    
+      window.onclick = (event) => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    });
+</script>    

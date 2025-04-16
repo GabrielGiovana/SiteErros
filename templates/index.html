@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="p-4">
+        <div id="riscos-container">
+            {% for problema in problemas %}
+                <div class="mb-4 card-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ problema.titulo }}</h5>
+                            <p class="card-text">{{ problema.descricao }}...</p>
+                            <button class="btn btn-warning btn-ver-mais" >Ver Mais </button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p>Nenhum problema encontrado.</p>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
