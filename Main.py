@@ -25,10 +25,10 @@ def novo_problema():
 
 
 
-# @app.route('/problema/<int:id>')
-# def detalhes_problema(id):
-#     problema = get_problema_by_id(id)
-#     return render_template('detalhes.html', problema=problema)
+@app.route('/problema/<int:id>')
+def detalhes_problema(id):
+    problema = get_problema_by_id(id)
+    return render_template('detalhes.html', problema=problema)
     
 
 
