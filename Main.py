@@ -9,25 +9,27 @@ def home():
     lista_de_problemas = Bd.problema()
     return render_template("index.html", problemas=lista_de_problemas) 
 
-# @app.route("/cadastrar", methods=["GET", "POST"])
-# def novo_problema():
-#     if request.method == "POST":
-#         titulo = request.form["titulo"]
-#         descricao = request.form["descricao"]
-#         solucao = request.form["solucao"]
-#         evitar = request.form["evitar"]
-#         imagem = request.form["imagem"]
-#         tag = request.form["tag"]
+@app.route("/cadastrar", methods=["POST"])
+def novo_problema():
+    if request.method == "POST":
+        titulo = request.form["titulo"]
+        descricao = request.form["descricao"]
+        solucao = request.form["solucao"]
+        evitar = request.form["evitar"]
+        tag = request.form["tag"]
 
-#         problema = Bd_Classes.Problema(titulo, descricao, solucao, evitar, imagem, tag)
-#         Bd.inserirProblema(problema)
+        problema = Bd_Classes.Problema(titulo, descricao, solucao, evitar,tag)
+        Bd.inserirProblema(problema)
 
-#         return render_template("teste.html")
+        return redirect("/")
+
+
+
+# @app.route('/problema/<int:id>')
+# def detalhes_problema(id):
+#     problema = get_problema_by_id(id)
+#     return render_template('detalhes.html', problema=problema)
     
-#     elif request.method == "GET":
-#       return render_template("teste.html")
-
-
 
 
 if __name__ == "__main__":

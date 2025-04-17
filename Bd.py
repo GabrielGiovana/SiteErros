@@ -1,43 +1,46 @@
 import psycopg2
 import Bd_Classes
 
-# def conexao():
-#     global bancoDeDados
-#     bancoDeDados = psycopg2.connect(
-#         host="localhost",
-#         user="postgres",
-#         password="",
-#         database="Teste"
-#     )
-#     return bancoDeDados.cursor()
+def conexao():
+    global bancoDeDados
+    bancoDeDados = psycopg2.connect(
+        host="127.0.0.1",
+        port=5433,
+        user="postgres",
+        password="postgree00",
+        database="erros"
+    )
+    return bancoDeDados.cursor()
 
-# def inserirProblema(problema):
-#     meuCursor = conexao()
-#     sql = """
-#         INSERT INTO problemas (titulo, descricao, solucao, evitar, imagem, tag)
-#         VALUES (%s, %s, %s, %s, %s, %s)
-#     """
-#     valores = (
-#         problema.titulo,
-#         problema.descricao,
-#         problema.solucao,
-#         problema.evitar,
-#         problema.imagem,
-#         problema.tag
-#     )
+def inserirProblema(problema):
+    meuCursor = conexao()
+    sql = """
+        INSERT INTO problemas (titulo, descricao, solucao, evitar,tag)
+        VALUES (%s, %s, %s, %s, %s)
+    """
+    valores = (
+        problema.titulo,
+        problema.descricao,
+        problema.solucao,
+        problema.evitar,
+        problema.tag
+    )
 
-#     meuCursor.execute(sql, valores)
-#     bancoDeDados.commit()
-#     meuCursor.close()
+    meuCursor.execute(sql, valores)
+    bancoDeDados.commit()
+    meuCursor.close()
 
 
 def problema():
-    # meuCursor = conexao()
-    # meuCursor.execute("SELECT * FROM problemas")
-    resultados = Bd_Classes.problema_simulado()
-    # meuCursor.close()
+    meuCursor = conexao()
+    sql = '''select * from problemas'''
+    meuCursor.execute(sql)
+    resultados = meuCursor.fetchall()
+    meuCursor.close()
 
-    problemas = []
+    problemas = [
+        
+    ]
 
     for linha in resultados:
         lista_problema = Bd_Classes.Problema(
@@ -46,10 +49,8 @@ def problema():
             descricao=linha[2],
             solucao=linha[3],
             evitar=linha[4],
-            imagem=linha[5],
-            tag=linha[6]
+            tag=linha[5]
         )
-        print(problema)
         problemas.append(lista_problema)
     
     return problemas

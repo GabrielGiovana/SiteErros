@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ problema.titulo }}</h5>
                             <p class="card-text">{{ problema.descricao }}...</p>
-                            <button class="btn btn-warning btn-ver-mais" >Ver Mais </button>
+                            <button class="btn btn-warning btn-ver-mais" onclick="window.location.href='{{url_for('detalhes_problema', id=problema.id)}}'" >Ver Mais </button>
                         </div>
                     </div>
                 </div>
