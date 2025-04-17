@@ -24,7 +24,6 @@ def novo_problema():
         return redirect("/")
 
 
-
 @app.route('/problema/<int:id>')
 def detalhes_problema(id):
     problema = get_problema_by_id(id)
