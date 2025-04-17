@@ -30,7 +30,6 @@ def inserirProblema(problema):
     bancoDeDados.commit()
     meuCursor.close()
 
-
 def problema():
     meuCursor = conexao()
     sql = '''select * from problemas'''
@@ -39,7 +38,7 @@ def problema():
     meuCursor.close()
 
     problemas = [
-        
+
     ]
 
     for linha in resultados:

@@ -7,3 +7,4 @@ class Problema:
         self.evitar = evitar
         self.tag = tag
 
+
