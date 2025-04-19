@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h2>{{ problema.titulo }}</h2>
+      </div>
+      <div class="card-body">
+        <p><strong>Descrição:</strong> {{ problema.descricao }}</p>
+        {% if problema.solucao %}
+          <p><strong>Solução:</strong> {{ problema.solucao }}</p>
+        {% endif %}
+        {% if problema.evitar %}
+          <p><strong>Como Evitar:</strong> {{ problema.evitar }}</p>
+        {% endif %}
+        {% if problema.tag %}
+          <p><strong>Tag:</strong> {{ problema.tag }}</p>
+        {% endif %}
+        <a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Voltar</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
