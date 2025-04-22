@@ -1,6 +1,20 @@
 import psycopg2
 import Bd_Classes
 
+<<<<<<< HEAD
+bancoDeDados = None # Inicializa a variável global
+
+def conexao():
+    global bancoDeDados
+    if bancoDeDados is None or bancoDeDados.closed:
+        bancoDeDados = psycopg2.connect(
+            host="localhost",
+            port=5432,
+            user="postgres",
+            password="tubarao007",
+            database="Teste"
+        )
+=======
 def conexao():
     global bancoDeDados
     bancoDeDados = psycopg2.connect(
@@ -10,6 +24,7 @@ def conexao():
         password="postgree00",
         database="erros"
     )
+>>>>>>> 476a85e80d3a131e3af12317f89f5ba222d18bec
     return bancoDeDados.cursor()
 
 def inserirProblema(problema):
@@ -37,10 +52,14 @@ def problema():
     resultados = meuCursor.fetchall()
     meuCursor.close()
 
+<<<<<<< HEAD
+    problemas = []
+=======
     problemas = [
 
     ]
 
+>>>>>>> 476a85e80d3a131e3af12317f89f5ba222d18bec
     for linha in resultados:
         lista_problema = Bd_Classes.Problema(
             id=linha[0],
@@ -51,6 +70,30 @@ def problema():
             tag=linha[5]
         )
         problemas.append(lista_problema)
+<<<<<<< HEAD
+ 
+    return problemas
+
+def get_problema_by_id(problema_id):
+    meuCursor = conexao()
+    sql = '''SELECT id, titulo, descricao, solucao, evitar, tag FROM problemas WHERE id = %s'''
+    meuCursor.execute(sql, (problema_id,))
+    resultado = meuCursor.fetchone()
+    meuCursor.close()
+
+    if resultado:
+        problema = Bd_Classes.Problema(
+            id=resultado[0],
+            titulo=resultado[1],
+            descricao=resultado[2],
+            solucao=resultado[3],
+            evitar=resultado[4],
+            tag=resultado[5]
+        )
+       
+    return problema
+=======
     
     return problemas
 
+>>>>>>> 476a85e80d3a131e3af12317f89f5ba222d18bec

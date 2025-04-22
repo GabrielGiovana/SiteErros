@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     lista_de_problemas = Bd.problema()
-    return render_template("index.html", problemas=lista_de_problemas) 
+    return render_template("index.html", problemas=lista_de_problemas)
 
 @app.route("/cadastrar", methods=["POST"])
 def novo_problema():
@@ -24,16 +24,13 @@ def novo_problema():
         return redirect("/")
 
 
-# @app.route('/problema/<int:id>')
-# def detalhes_problema(id):
-#     problema = get_problema_by_id(id)
-#     return render_template('detalhes.html', problema=problema)
+@app.route('/problema/<int:id>')
+def detalhes_problema(id):
+    problema = Bd.get_problema_by_id(id)
+    if problema:
+        return render_template('detalhes.html', problema=problema)
     
-
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-

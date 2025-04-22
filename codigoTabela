@@ -4,6 +4,5 @@ CREATE TABLE problemas (
     descricao TEXT NOT NULL,
     solucao TEXT,
     evitar TEXT,
-    imagem TEXT,
     tag INT
 );
